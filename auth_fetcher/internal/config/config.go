@@ -8,6 +8,7 @@ import (
 )
 
 type Config struct {
+	LoginURL    string      `yaml:"login_url"`
 	Credentials Credentials `yaml:"credentials"`
 	Captcha     Captcha     `yaml:"captcha"`
 }
