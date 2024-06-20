@@ -1,0 +1,10 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "vacancies_fetcher/internal/repository/queries.sql"
+    schema: "migrations"
+    gen:
+      go:
+        package: "repository"
+        out: "vacancies_fetcher/internal/repository"
+        sql_package: "pgx/v5"
