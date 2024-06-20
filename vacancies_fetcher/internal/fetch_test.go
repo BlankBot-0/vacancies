@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"strings"
 	"testing"
+	"vacancies/vacancies_fetcher"
 )
 
 func TestUnauthorizedVacanciesRetrieval(t *testing.T) {
@@ -49,7 +50,7 @@ func TestUnauthorizedVacanciesRetrieval(t *testing.T) {
 }
 
 func TestFetchVacancies(t *testing.T) {
-	fetcher := VacanciesFetcher{
+	fetcher := vacancies_fetcher.VacanciesFetcher{
 		VacanciesURL: "https://career.habr.com/vacancies",
 		KeyWord:      "go",
 	}

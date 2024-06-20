@@ -1,0 +1,5 @@
+credentials:
+  email: "email@bebra.com"
+  password: "password"
+captcha_api_key: "api_key"
+port: "8080"

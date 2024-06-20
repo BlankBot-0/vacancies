@@ -19,3 +19,9 @@ type MetaInfo struct {
 	CurrentPage  int `json:"currentPage"`
 	TotalPages   int `json:"totalPages"`
 }
+
+var (
+	VacanciesURL   = `https://career.habr.com/vacancies`
+	BaseURL        = `https://career.habr.com`
+	AvatarSelector = `img.user_panel__avatar-image[alt="Ваш аватар"]`
+)

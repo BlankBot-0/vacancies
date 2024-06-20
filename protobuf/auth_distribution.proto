@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "github.com/BlankBot-0/vacancies/protobuf";
+
+package auth;
+
+service AuthService {
+  rpc RequestAuthorizationData(Request) returns (AuthorizationData);
+}
+
+message AuthorizationData {
+  Cookie _career_session = 1;
+  Cookie remember_user_token = 2;
+  Cookie check_cookies = 3;
+  Cookie mid = 4;
+}
+
+message Cookie {
+  string name = 1;
+  string value = 2;
+  string path = 3;
+  string domain = 4;
+  int64 expires = 5;
+  bool secure = 6;
+  bool http_only = 7;
+}
+
+message Request {
+  string message = 1;
+}

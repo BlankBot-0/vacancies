@@ -1,0 +1,42 @@
+version: "3.1"
+services:
+  db:
+    image: postgres:16.2-alpine3.19
+    hostname: ff-db
+    container_name: ff-db
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    depends_on:
+      - db
+
+  auth:
+    build:
+      context: .
+      dockerfile: auth.Dockerfile
+    container_name: auth
+    hostname: auth
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - rabbitmq
+
+  fetch:
+    build:
+      context: .
+      dockerfile: fetch.Dockerfile
+    container_name: fetch
+    hostname: fetch
+    depends_on:
+      - auth
